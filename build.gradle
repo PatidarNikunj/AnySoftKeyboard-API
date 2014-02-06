@@ -9,11 +9,6 @@ buildscript {
 
 apply plugin: 'android-library'
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
-
 version '1.2.2'
 group 'net.evendanan.anysoftkeyboard'
 
@@ -23,6 +18,10 @@ android {
 
     defaultConfig {
         minSdkVersion 4
+        targetSdkVersion 19
+
+        versionName project.version
+        versionCode 1
     }
 }
 
@@ -40,7 +39,6 @@ configurations {
 }
 
 signing {
-    required { isReleaseBuild() && gradle.taskGraph.hasTask("uploadArchives") }
     sign configurations.archives
 }
 
@@ -140,4 +138,7 @@ task androidSourcesJar(type: Jar) {
 artifacts {
     archives androidSourcesJar
     archives androidJavadocsJar
+}
+
+dependencies {
 }
